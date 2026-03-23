@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { BookOpen, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,8 +11,7 @@ const Footer = () => {
           {/* Logo and About */}
           <div className="col-span-1 md:col-span-1 lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <BookOpen size={28} className="text-secondary" />
-              <span className="text-xl font-heading font-bold">LAPQ</span>
+              <img src="/logo_lapq.jpeg" alt="LAPQ" className="h-8 w-auto brightness-0 invert" />
             </div>
             <p className="text-gray-300 mb-6">
               Laboratório de Avaliação e Pesquisa Qualitativa - um espaço coletivo Multi(inter)disciplinar vinculado aos Programas de Pós-graduação.

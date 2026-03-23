@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, BookOpen, ChevronDown, Users } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,19 +42,13 @@ const Navbar = () => {
       <div className="container-custom flex justify-between items-center">
         {/* Logo */}
         <NavLink to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-          <BookOpen 
-            size={28} 
-            className={`transition-colors duration-300 ${
-              isScrolled || !isHomePage ? 'text-primary' : 'text-white'
-            }`} 
-          />
-          <span 
-            className={`text-xl font-heading font-bold transition-colors duration-300 ${
-              isScrolled || !isHomePage ? 'text-dark' : 'text-white'
+          <img
+            src="/logo_lapq.jpeg"
+            alt="LAPQ"
+            className={`h-8 w-auto transition-all duration-300 ${
+              isScrolled || !isHomePage ? '' : 'bg-white/90 rounded px-1 py-0.5'
             }`}
-          >
-            LAPQ
-          </span>
+          />
         </NavLink>
 
         {/* Desktop Menu */}
