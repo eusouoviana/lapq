@@ -28,23 +28,24 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   },
 });
 
-// Test Supabase connection on initialization
-(async () => {
-  try {
-    console.log('Testing Supabase connection...');
-    
-    // Test connection to lapq_event_registrations table
-    const { count, error, status } = await supabase
-      .from('lapq_event_registrations')
-      .select('*', { count: 'exact', head: true });
-    
-    if (error) {
-      console.error('Supabase connection test failed:', error);
-      console.error('Status code:', status);
-    } else {
-      console.log(`Supabase connection successful. Found ${count} event registrations.`);
+// Test Supabase connection on initialization (dev only)
+if (import.meta.env.DEV) {
+  (async () => {
+    try {
+      console.log('Testing Supabase connection...');
+
+      const { count, error, status } = await supabase
+        .from('lapq_event_registrations')
+        .select('*', { count: 'exact', head: true });
+
+      if (error) {
+        console.error('Supabase connection test failed:', error);
+        console.error('Status code:', status);
+      } else {
+        console.log(`Supabase connection successful. Found ${count} event registrations.`);
+      }
+    } catch (err) {
+      console.error('Error testing Supabase connection:', err);
     }
-  } catch (err) {
-    console.error('Error testing Supabase connection:', err);
-  }
-})();
+  })();
+}

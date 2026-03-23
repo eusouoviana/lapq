@@ -3,6 +3,39 @@ import { BookOpen, Award, Users, ChevronRight, Check, BookOpen as BookOpenIcon }
 import AnimatedElement from '../components/utils/AnimatedElement';
 import SectionTitle from '../components/ui/SectionTitle';
 
+const missionPoints = [
+  "Promover a pesquisa qualitativa de alta qualidade",
+  "Desenvolver metodologias inovadoras",
+  "Formar pesquisadores qualificados",
+  "Integrar diferentes perspectivas acadêmicas",
+];
+
+const visionPoints = [
+  "Ser referência nacional em pesquisa qualitativa",
+  "Alcançar reconhecimento internacional",
+  "Influenciar práticas profissionais e políticas públicas",
+  "Criar uma rede colaborativa de excelência",
+];
+
+const values = [
+  { title: "Rigor Científico", desc: "Compromisso com a qualidade e rigor metodológico em todas as pesquisas desenvolvidas", icon: <BookOpen size={30} />, color: "primary" },
+  { title: "Integridade", desc: "Condução ética e responsável de todos os processos de pesquisa", icon: <Award size={30} />, color: "secondary" },
+  { title: "Colaboração", desc: "Valorização do trabalho em equipe e das parcerias inter-institucionais", icon: <Users size={30} />, color: "accent" },
+  { title: "Inovação", desc: "Busca contínua por abordagens metodológicas inovadoras", icon: <BookOpenIcon size={30} />, color: "green-500" },
+  { title: "Relevância", desc: "Desenvolvimento de pesquisas com impacto acadêmico e prático", icon: <Award size={30} />, color: "yellow-500" },
+  { title: "Inclusão", desc: "Valorização da diversidade de perspectivas e backgrounds", icon: <Users size={30} />, color: "purple-500" },
+];
+
+const timelineEvents = [
+  { year: "2022", title: "Fundação do LAPQ", desc: "Assinatura do convênio de cooperação técnica No 216/2022 – GR (11.01) entre a UPM e a UFPE" },
+  { year: "2022", title: "Primeiros Projetos", desc: "Início dos primeiros projetos de pesquisa qualitativa em Controladoria" },
+  { year: "2023", title: "Expansão da Rede", desc: "Integração de pesquisadores de diversas instituições nacionais" },
+  { year: "2024", title: "Internacionalização", desc: "Estabelecimento de parcerias com instituições internacionais" },
+  { year: "2025", title: "Visão Futura", desc: "Consolidação como centro de referência em pesquisa qualitativa no Brasil" },
+];
+
+const partnerUniversities = ["UNIFESP", "UFPB", "UFSC", "USP", "USCS", "UNIFECAP"];
+
 const About = () => {
   return (
     <div>
@@ -101,12 +134,7 @@ const About = () => {
                   Promover e desenvolver pesquisas qualitativas de excelência na área de Controladoria e Finanças Empresariais, integrando diferentes perspectivas metodológicas e formando pesquisadores capacitados para contribuir com o avanço do conhecimento científico e prático.
                 </p>
                 <ul className="mt-6 space-y-3">
-                  {[
-                    "Promover a pesquisa qualitativa de alta qualidade",
-                    "Desenvolver metodologias inovadoras",
-                    "Formar pesquisadores qualificados",
-                    "Integrar diferentes perspectivas acadêmicas"
-                  ].map((item, index) => (
+                  {missionPoints.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Check size={18} className="text-primary mt-1 mr-3 flex-shrink-0" />
                       <span>{item}</span>
@@ -126,12 +154,7 @@ const About = () => {
                   Ser reconhecido nacional e internacionalmente como um centro de referência em pesquisa qualitativa na área de Controladoria e Finanças Empresariais, contribuindo para o desenvolvimento teórico e prático do campo e formando líderes acadêmicos e profissionais.
                 </p>
                 <ul className="mt-6 space-y-3">
-                  {[
-                    "Ser referência nacional em pesquisa qualitativa",
-                    "Alcançar reconhecimento internacional",
-                    "Influenciar práticas profissionais e políticas públicas",
-                    "Criar uma rede colaborativa de excelência"
-                  ].map((item, index) => (
+                  {visionPoints.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Check size={18} className="text-secondary mt-1 mr-3 flex-shrink-0" />
                       <span>{item}</span>
@@ -156,44 +179,7 @@ const About = () => {
           </AnimatedElement>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {[
-              {
-                title: "Rigor Científico",
-                desc: "Compromisso com a qualidade e rigor metodológico em todas as pesquisas desenvolvidas",
-                icon: <BookOpen size={30} />,
-                color: "primary"
-              },
-              {
-                title: "Integridade",
-                desc: "Condução ética e responsável de todos os processos de pesquisa",
-                icon: <Award size={30} />,
-                color: "secondary"
-              },
-              {
-                title: "Colaboração",
-                desc: "Valorização do trabalho em equipe e das parcerias inter-institucionais",
-                icon: <Users size={30} />,
-                color: "accent"
-              },
-              {
-                title: "Inovação",
-                desc: "Busca contínua por abordagens metodológicas inovadoras",
-                icon: <BookOpenIcon size={30} />,
-                color: "green-500"
-              },
-              {
-                title: "Relevância",
-                desc: "Desenvolvimento de pesquisas com impacto acadêmico e prático",
-                icon: <Award size={30} />,
-                color: "yellow-500"
-              },
-              {
-                title: "Inclusão",
-                desc: "Valorização da diversidade de perspectivas e backgrounds",
-                icon: <Users size={30} />,
-                color: "purple-500"
-              }
-            ].map((value, index) => (
+            {values.map((value, index) => (
               <AnimatedElement key={index} animation="scale-in" delay={index * 100}>
                 <div className={`p-8 rounded-xl bg-${value.color}/5 border border-${value.color}/20 h-full transition-all duration-300 hover:shadow-lg`}>
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-${value.color}/10 text-${value.color} mb-6`}>
@@ -307,7 +293,7 @@ const About = () => {
           <div className="mt-12 text-center">
             <p className="text-gray-600 mb-6">Além destas, contamos com a colaboração de diversas outras instituições nacionais e internacionais</p>
             <div className="flex flex-wrap justify-center gap-8 mt-8">
-              {["UNIFESP", "UFPB", "UFSC", "USP", "USCS", "UNIFECAP"].map((uni, index) => (
+              {partnerUniversities.map((uni, index) => (
                 <AnimatedElement key={index} animation="fade-in" delay={index * 100}>
                   <div className="bg-white px-6 py-4 rounded-lg shadow-sm border border-gray-100">
                     <span className="font-medium text-gray-800">{uni}</span>
@@ -336,33 +322,7 @@ const About = () => {
             
             {/* Timeline events */}
             <div className="relative">
-              {[
-                {
-                  year: "2022",
-                  title: "Fundação do LAPQ",
-                  desc: "Assinatura do convênio de cooperação técnica No 216/2022 – GR (11.01) entre a UPM e a UFPE"
-                },
-                {
-                  year: "2022",
-                  title: "Primeiros Projetos",
-                  desc: "Início dos primeiros projetos de pesquisa qualitativa em Controladoria"
-                },
-                {
-                  year: "2023",
-                  title: "Expansão da Rede",
-                  desc: "Integração de pesquisadores de diversas instituições nacionais"
-                },
-                {
-                  year: "2024",
-                  title: "Internacionalização",
-                  desc: "Estabelecimento de parcerias com instituições internacionais"
-                },
-                {
-                  year: "2025",
-                  title: "Visão Futura",
-                  desc: "Consolidação como centro de referência em pesquisa qualitativa no Brasil"
-                }
-              ].map((event, index) => (
+              {timelineEvents.map((event, index) => (
                 <AnimatedElement 
                   key={index} 
                   animation={index % 2 === 0 ? "slide-in-right" : "slide-up"}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Search, ExternalLink, BookOpen, Mail, Users } from 'lucide-react';
 import AnimatedElement from '../components/utils/AnimatedElement';
@@ -158,7 +158,10 @@ const Researchers = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [institutionFilter, setInstitutionFilter] = useState('');
 
-  const institutions = [...new Set(researchers.map(r => r.institution))];
+  const institutions = useMemo(
+    () => [...new Set(researchers.map(r => r.institution))],
+    []
+  );
 
   const filteredResearchers = researchers.filter(researcher => {
     return (

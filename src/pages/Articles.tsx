@@ -221,6 +221,11 @@ const Articles = () => {
       id: 42,
       title: "Yilmaz (2013) Comparison of Quantitative and Qualitative Research Traditions",
       link: "https://mackenzie.br/fileadmin/user_upload/Yilmaz__2013__Comparison_of_Quantitative_and_Qualitative_Research_Traditions.pdf"
+    },
+    {
+      id: 43,
+      title: "Snyder (2019) Literature review as a research methodology: An overview and guidelines",
+      link: "https://doi.org/10.1016/j.jbusres.2019.07.039"
     }
   ];
 

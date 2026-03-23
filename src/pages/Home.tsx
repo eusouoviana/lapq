@@ -1,8 +1,45 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Award, Users, ChevronRight, LineChart, BookOpen as BookOpenIcon, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AnimatedElement from '../components/utils/AnimatedElement';
 import SectionTitle from '../components/ui/SectionTitle';
+
+const stats = [
+  { icon: 'book', number: "50+", label: "Artigos Publicados" },
+  { icon: 'users', number: "18", label: "Pesquisadores" },
+  { icon: 'award', number: "12", label: "Instituições Parceiras" },
+  { icon: 'chart', number: "25+", label: "Projetos de Pesquisa" },
+];
+
+const researchAreas = [
+  { title: "Contabilidade Gerencial", desc: "Pesquisas qualitativas sobre sistemas de controle gerencial e tomada de decisão", bg: "bg-primary/20" },
+  { title: "Controladoria Empresarial", desc: "Estudos sobre práticas de controladoria e seu impacto nas organizações", bg: "bg-secondary/20" },
+  { title: "Governança Corporativa", desc: "Análise de mecanismos de governança e transparência empresarial", bg: "bg-accent/20" },
+  { title: "Contabilidade Pública", desc: "Investigações sobre gestão e controle de recursos públicos", bg: "bg-green-500/20" },
+  { title: "Finanças Empresariais", desc: "Pesquisas sobre estratégias financeiras e criação de valor", bg: "bg-yellow-500/20" },
+  { title: "Metodologias Qualitativas", desc: "Desenvolvimento e aprimoramento de métodos qualitativos de pesquisa", bg: "bg-purple-500/20" },
+];
+
+const featuredResearchers = [
+  { name: "Prof. Dra. Ana Lúcia Fontes de Souza Vasconcelos", institution: "Universidade Federal de Pernambuco (UFPE)", lattes: "http://lattes.cnpq.br/6786196161894864" },
+  { name: "Prof. Dr. Cláudio de Araújo Wanderley", institution: "Universidade Federal de Pernambuco (UFPE)", lattes: "http://lattes.cnpq.br/0634283724256002" },
+  { name: "Prof. Dr. Davi Jônatas Cunha Araújo", institution: "Universidade Presbiteriana Mackenzie (UPM)", lattes: "http://lattes.cnpq.br/6065443356879996" },
+];
+
+const statIcons: Record<string, React.ReactNode> = {
+  book: <BookOpenIcon size={30} />,
+  users: <Users size={30} />,
+  award: <Award size={30} />,
+  chart: <LineChart size={30} />,
+};
+
+const missionItems = [
+  { icon: <BookOpen size={20} />, text: "Promover pesquisas qualitativas de alta qualidade" },
+  { icon: <Users size={20} />, text: "Integrar pesquisadores de diversas instituições" },
+  { icon: <LineChart size={20} />, text: "Desenvolver metodologias inovadoras de pesquisa" },
+  { icon: <Award size={20} />, text: "Contribuir para o avanço do conhecimento em Contabilidade" },
+];
 
 const Home = () => {
   return (
@@ -93,12 +130,7 @@ const Home = () => {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full"></div>
                 <h3 className="font-heading text-2xl font-bold mb-6 text-primary">Nossa Missão</h3>
                 <ul className="space-y-4">
-                  {[
-                    { icon: <BookOpen size={20} />, text: "Promover pesquisas qualitativas de alta qualidade" },
-                    { icon: <Users size={20} />, text: "Integrar pesquisadores de diversas instituições" },
-                    { icon: <LineChart size={20} />, text: "Desenvolver metodologias inovadoras de pesquisa" },
-                    { icon: <Award size={20} />, text: "Contribuir para o avanço do conhecimento em Contabilidade" }
-                  ].map((item, index) => (
+                  {missionItems.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <div className="bg-primary/10 p-2 rounded-lg mr-4 text-primary">
                         {item.icon}
@@ -118,12 +150,7 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-dots-pattern opacity-50"></div>
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: <BookOpenIcon size={30} />, number: "50+", label: "Artigos Publicados" },
-              { icon: <Users size={30} />, number: "18", label: "Pesquisadores" },
-              { icon: <Award size={30} />, number: "12", label: "Instituições Parceiras" },
-              { icon: <LineChart size={30} />, number: "25+", label: "Projetos de Pesquisa" }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <AnimatedElement 
                 key={index} 
                 animation="scale-in" 
@@ -131,7 +158,7 @@ const Home = () => {
                 className="text-center p-8 rounded-xl border border-gray-100 shadow-md bg-white"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                  {stat.icon}
+                  {statIcons[stat.icon]}
                 </div>
                 <h3 className="text-4xl font-heading font-bold text-dark mb-2">
                   {stat.number}
@@ -157,38 +184,7 @@ const Home = () => {
           </AnimatedElement>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Contabilidade Gerencial",
-                desc: "Pesquisas qualitativas sobre sistemas de controle gerencial e tomada de decisão",
-                bg: "bg-primary/20"
-              },
-              {
-                title: "Controladoria Empresarial",
-                desc: "Estudos sobre práticas de controladoria e seu impacto nas organizações",
-                bg: "bg-secondary/20"
-              },
-              {
-                title: "Governança Corporativa",
-                desc: "Análise de mecanismos de governança e transparência empresarial",
-                bg: "bg-accent/20"
-              },
-              {
-                title: "Contabilidade Pública",
-                desc: "Investigações sobre gestão e controle de recursos públicos",
-                bg: "bg-green-500/20"
-              },
-              {
-                title: "Finanças Empresariais",
-                desc: "Pesquisas sobre estratégias financeiras e criação de valor",
-                bg: "bg-yellow-500/20"
-              },
-              {
-                title: "Metodologias Qualitativas",
-                desc: "Desenvolvimento e aprimoramento de métodos qualitativos de pesquisa",
-                bg: "bg-purple-500/20"
-              }
-            ].map((area, index) => (
+            {researchAreas.map((area, index) => (
               <AnimatedElement key={index} animation="fade-in" delay={index * 100}>
                 <div className={`p-8 rounded-xl ${area.bg} h-full border border-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105`}>
                   <h3 className="text-xl font-heading font-bold mb-4">{area.title}</h3>
@@ -215,23 +211,7 @@ const Home = () => {
           </AnimatedElement>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Prof. Dra. Ana Lúcia Fontes de Souza Vasconcelos",
-                institution: "Universidade Federal de Pernambuco (UFPE)",
-                lattes: "http://lattes.cnpq.br/6786196161894864"
-              },
-              {
-                name: "Prof. Dr. Cláudio de Araújo Wanderley",
-                institution: "Universidade Federal de Pernambuco (UFPE)",
-                lattes: "http://lattes.cnpq.br/0634283724256002"
-              },
-              {
-                name: "Prof. Dr. Davi Jônatas Cunha Araújo",
-                institution: "Universidade Presbiteriana Mackenzie (UPM)",
-                lattes: "http://lattes.cnpq.br/6065443356879996"
-              }
-            ].map((researcher, index) => (
+            {featuredResearchers.map((researcher, index) => (
               <AnimatedElement key={index} animation="slide-up" delay={index * 100}>
                 <div className="card card-hover h-full p-6">
                   <div className="flex items-center justify-center mb-4">
